@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="it">
+
+<head>
+    <link rel="icon" href="image/icona.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Generatore di tabelle</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <a href="../../../index.html" target="_self"><img src="image/texaedu.png" alt="Logo"></a>
+
+        </div>
+
+        <div class="title">Generatore di tabelle</div>
+
+       
+
+    </nav>
+
+   
+    <div class="site">
+        <div class="containertable">
+
+        
+            <table class="table"> 
+                <tr><th>Rivenditore</th><th>ID ax</th><th>Nome</th><th>Cognome</th><th>nome utente</th><th>PR</th><th>Email</th><th>Cellulare</th><th>Telefono</th><th>Codice fiscale</th><th>Ragione sociale</th><th>P.iva</th><th>Indirizzo</th><th>Città</th><th>Provincia</th><th>CAP</th><th>Note</th></tr>
+                <tbody id="tabella">
+                    <!-- Le righe della tabella verranno aggiunte qui dallo script -->
+                </tbody>
+            </table>
+            
+            
+        </div>
+        
+        <div class="containertable">
+            <button class="btn-conferma" id="btnConferma">Download</button>
+            
+    
+        </div>
+    </div>
+
+
+    
+
+    
+
+
+    <script>
+        
+
+        const btnConferma = document.getElementById('btnConferma');
+        btnConferma.style.display = 'block';
+
+
+        btnConferma.addEventListener('click', function() {
+            var table2excel = new Table2Excel();
+
+            // Estendi il plugin per trattare tutte le celle come testo
+            Table2Excel.extend((cell, cellText) => {
+                return {
+                t: 's', // 's' indica che il tipo di cella è testo
+                v: cellText // il valore della cella
+                };
+            });
+
+            table2excel.export(document.querySelectorAll("table"));
+
+        });
+
+        var array2D = JSON.parse(localStorage.getItem('newtable'));
+
+        // Se l'array esiste, lo stampiamo nella tabella
+        if (array2D) {
+            var tableBody = document.getElementById("tabella");
+
+            // Iteriamo sull'array per creare le righe della tabella
+            array2D.forEach(function(row) {
+                var tr = document.createElement('tr');
+
+                row.forEach(function(cell) {
+                    var td = document.createElement('td');
+                    td.textContent = cell;
+                    tr.appendChild(td);
+                });
+
+                tableBody.appendChild(tr);
+            });
+        } else {
+            alert("Nessun array trovato.");
+        }
+
+    
+       
+
+
+        // <p id="error-message">Errore: per favore, digita del testo.</p>
+    </script>
+    <script src="table2excel.js"></script>
+</body>
+
+</html>

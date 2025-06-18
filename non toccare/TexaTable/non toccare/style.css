@@ -1,0 +1,263 @@
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+body {
+    
+    font-family: Arial, sans-serif;
+
+    /*background-color: #f0f0f0;*/
+    background-image: url('./image/TEXA-Headquarters-7.jpg');
+    background-size: cover; /* Adatta l'immagine per coprire l'intero schermo */
+    background-repeat: no-repeat; /* Evita che l'immagine si ripeta */
+    background-position: center center; /* Centra l'immagine */
+    background-attachment: fixed; /* Mantiene l'immagine fissa mentre scorri */
+    display: flex;
+
+    flex-direction: column; /* Disposizione verticale */
+
+    align-items: center; /* Centrare orizzontalmente */
+
+    min-height: 100vh; /* Assicura che il contenuto occupi tutta l'altezza della finestra */
+
+}
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  z-index: 1000;
+}
+
+.site{
+  align-items: center;
+  flex-direction: column;
+  padding-top: 60px;
+}
+.navbar {
+  
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background-color: #0073e6;
+    padding: 0 2%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+
+.title {
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+    flex-grow: 1; /* Consente al titolo di occupare tutto lo spazio disponibile */
+    display: flex;
+    justify-content: center; /* Centra il testo orizzontalmente */
+}
+
+
+.logo img, .menu-icon {
+    max-height: 60px; /* Massima altezza uguale alla navbar */
+    width: auto;
+}
+
+
+
+/* Centrare il contenuto sotto la navbar */
+
+.container {
+    
+    padding-right: 50%;
+    
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 8px;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    width: 400px;
+
+    text-align: center;
+
+    margin-top: 20px; /* Spazio tra la navbar e il contenuto */
+
+}
+
+
+.container textarea{
+  width: 300px;
+  height: 500px;
+}
+
+h1 {
+
+    font-size: 24px;
+
+    color: #333;
+
+    margin-bottom: 20px;
+
+}
+
+
+.cartella {
+
+    border: 2px solid #1e90ff;
+
+    padding: 20px;
+
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+
+    background-color: #f9f9f9;
+
+}
+
+
+input[type="file"] {
+
+    border: 2px solid #1e90ff;
+
+    background-color: white;
+
+    padding: 10px;
+
+    border-radius: 5px;
+
+    width: 100%;
+
+    cursor: pointer;
+
+}
+
+
+input[type="file"] :hover{
+
+    color: white;
+
+    border: 2px solid white;
+
+    background-color: #1e90ff;
+
+    padding: 10px;
+
+    border-radius: 5px;
+
+    width: 100%;
+
+    cursor: pointer;
+
+}
+
+
+.btn-conferma {
+
+    display: none;
+
+    margin-top: 20px;
+
+    background-color: #1e90ff;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 20px;
+
+    font-size: 16px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    width: 100%;
+
+}
+
+.btn-conferma img{
+  width: 80px;
+  height: 80px;   
+}
+.btn-conferma:hover {
+
+    background-color: #007acc;
+
+}
+
+.containertable {
+    width: 70%;
+    overflow-y: auto; 
+    overflow-x: auto; /* Abilita lo scorrimento orizzontale */
+    white-space: nowrap;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Centra il contenitore orizzontalmente */
+    margin-top: 20px; /* Spazio tra la navbar e il contenuto */
+    display: flex;
+    
+  }
+/* Centrare la tabella */
+table {
+   
+    border-collapse: collapse;
+
+  }
+  
+  /* Bordo blu per la tabella */
+  table, th, td {
+    border: 2px solid blue;
+  }
+  
+  /* Prima riga: testo bianco, spazi interni blu */
+  th {
+    background-color: #007acc;
+    color: white;
+    padding: 10px;
+  }
+  
+  /* Righe sottostanti: testo nero, spazi bianchi */
+  td {
+    background-color: white;
+    color: black;
+    padding: 10px;
+  }
+  
+  .container p {
+    text-align: left;
+  }
+
+  .Nota {
+    padding: 3px;
+    border-radius: 10px;
+    background-color: yellow;
+    border: 2px solid black;
+  }
+
+  .container img{
+    width: 100%;
+  }

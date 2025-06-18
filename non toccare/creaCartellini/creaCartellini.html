@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../TexaTable/non toccare/image/icona.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore di cartellini</title>
+    <link rel="stylesheet" href="../TexaTable/non toccare/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <a href="../../index.html" target="_self"><img src="../TexaTable/non toccare/image/texaedu.png" alt="Logo"></a>
+
+        </div>
+
+        <div class="title">Generatore di cartellini</div>
+
+        
+
+    </nav>
+    
+    <div class="site">
+        <div class="container">
+            <h1>Incolla i dati da Excel</h1>
+            <textarea id="excelInput" placeholder="Incolla qui i dati da Excel"></textarea>
+            <button style="display:block;" class="btn-conferma" id="btnConferma" onclick="convertToTable()">Converti in Tabella</button>
+            
+        </div>
+        <div class="containertable" id="tableContainer"></div>
+    </div>
+    
+
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.11.0/dist/pdf-lib.min.js"></script>
+<script>
+    function convertToTable() {
+        let input = document.getElementById("excelInput").value;
+        let rows = input.split("\n").filter(row => row.trim() !== "");
+        let table = "<table><tbody>";
+
+        rows.forEach(row => {
+            let cols = row.split("\t");
+            table += "<tr>";
+            cols.forEach(col => {
+                table += `<td>${col}</td>`;
+            });
+            table += "</tr>";
+        });
+
+        table += "</tbody></table>";
+        document.getElementById("tableContainer").innerHTML = table;
+        generatePdfFromExcel();
+    }
+
+
+    async function generatePdfFromExcel() {
+        
+        let rows = document.querySelectorAll("#tableContainer table tbody tr");
+ 
+
+        let x = 0;
+        
+
+        for(let cicli = 0; cicli < Math.ceil(rows.length/10); cicli++){
+            const existingPdfBytes = await fetch('cartellino.pdf').then(res => res.arrayBuffer());
+            const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes); // Usa PDFLib invece di PDFDocument
+            const form = pdfDoc.getForm();
+            const fields = form.getFields();
+        
+            
+
+            for(let i = 0; i < fields.length; i++){
+                if(x < rows.length){
+                    let cols = rows[x].querySelectorAll("td");
+                    let nome = "";
+                    for (let y = 0; y < cols.length; y++) {
+                        nome += cols[y].textContent + " ";
+                        
+                    }
+                    console.log("riga " + x + " nome " + nome);
+                    fields[i].setText(nome);
+                    x++;
+                }
+                
+            }
+
+            const modifiedPdfBytes = await pdfDoc.save();
+            const blob = new Blob([modifiedPdfBytes], { type: 'application/pdf' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'cartellini'+ (cicli+1).toString() +'.pdf';
+            link.click();
+        }
+        
+
+        
+    }
+    
+
+       
+</script>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="it">
+
+<head>
+
+    <link rel="icon" href="non toccare/image/icona.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+
+    <title>Generatore di tabelle</title>
+
+    <link rel="stylesheet" href="non toccare/style.css">
+
+</head>
+
+<body>
+    <div id="loading-screen" style="display: none;">
+        <p>Caricamento...</p>
+    </div>
+    
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <a href="../../index.html" target="_self"><img src="non toccare/image/texaedu.png" alt="Logo"></a>
+
+        </div>
+
+        <div class="title">Generatore di tabelle</div>
+
+        
+
+    </nav>
+
+
+
+    <div class="site">
+        <div class="container">
+
+            <h1>Inserisci una cartella con i PDF dei partecipanti</h1>
+    
+              <input type="file" id="cartella" webkitdirectory directory accept=".pdf">
+    
+            <button class="btn-conferma" id="btnConferma">Conferma</button>
+    
+            <div id="output"></div>
+    
+        </div>
+    
+        <div class="container">
+    
+            <h1>1: crea una cartella da inserire come input</h1>
+            <p class="Nota">Nota: all'interno della cartella ci devono essere <strong>solo</strong> i file delle adesioni in PDF</p>
+            <img src="non toccare/image/cartella.png">
+    
+        
+    
+        </div>
+    
+        <div class="container">
+    
+            <h1>2: inserisci nella tabella i file delle adesione ai corsi</h1>
+            <p>I file devono:</p><br>
+            <p>- Essere in formato PDF</p><br>
+            <p>- Essere nominati con il seguete formato:</p><br><p> <strong>Se bba:</strong> numero di persone_bba_resto del nome</p><br><p> <strong>Altrimenti: </strong>numero di persone_resto del nome</p><br>
+            <p class="Nota">Nota: è importante che tra il numero di persone e il tipo di modulo ci sia un solo "_" e che "bba" sia scritto correttamente (se è maiuscolo o minuscolo è indifferente)</p>
+            <img src="non toccare/image/esempio.png">
+    
+            
+    
+        </div>
+    
+    
+        <div class="container">
+    
+            <h1>3: selezionare la cartella</h1>
+            <p>Premi il pulsante "scegli il file" che trovi sopra</p><br>
+            <img src="non toccare/image/sceglifile.png">
+            <p>Seleziona la cartella creata con i file all'interno e premere il tasto "Carica"</p><br>
+            <img src="non toccare/image/carica.png">
+            <p>Fidarsi è bene, non fidarsi è meglio ma in questo caso è meglio fidarsi e premere "Carica"</p><br>
+            <img src="non toccare/image/carica2.png">
+    
+           
+    
+        </div>
+    
+        <div class="container">
+    
+            <h1>4: selezionare a mano gli elementi della tabella creata</h1>
+            <p>Porta il cursore sul primo elemento a sinistra alla prima riga, tieni premuto il tasto sinistro e trascina il mouse fino all'ultimo elemento a destra dell'ultima riga, successivamente premi il tasto destro del mouse e premi "copia" (oppure usa la combinazione di tasti <strong>Ctrl+C</strong>) </p><br>
+            <p class="Nota">Il programma può compiere degli errori quindi è consigliabile controllare personalmente i dati estratti con i dati presenti nei file delle iscrizioni</p>
+    
+        </div>
+    
+        <div class="container">
+    
+            <h1>5: incolla i dati copiati</h1>
+            <p>Aprire un qualsiasi foglio di calcolo e premere il tasto destro del mouse su una casella dove si vuole che inizi la tabella e premere l'opzione "incolla" (oppure usa la combinazione di tasti <strong>Ctrl+V</strong>) </p><br>
+            
+        </div>
+    </div>
+    
+    
+    <script src="non toccare/script.js"></script>
+
+</body>
+
+</html>
