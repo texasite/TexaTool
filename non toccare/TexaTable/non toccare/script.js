@@ -722,8 +722,10 @@ inputFile.addEventListener('change', function(event) {
                                 cfestratto = fileText.split(":")[reader+2+iscritticounter].split(" ")[1];
                               }
                               
-      
                             }
+
+                          
+                            
                             if(datipersone.toUpperCase().includes("ISCRITTI"))
                                 continue;
       
@@ -739,13 +741,15 @@ inputFile.addEventListener('change', function(event) {
                                 }
                       
                               }
+                              
                               let numpos = 0;
 
                                 //nome
                                 try{
-                                    newtable[slide+iscritticounter][2] = "";
                                     
-                                    if(newtable[slide+iscritticounter][2]==""){
+                                    
+                                    if(newtable[slide+iscritticounter][2].length == 0){ // se non c'è già scritto qualcosa
+                                      
                                       for(let z = 0; z < datipersone.split("/n")[iscritticounter].split(",")[0].split(" ").length; z++){
                                         if(datipersone.split("/n")[iscritticounter].split(",")[0].split(" ")[z] != ""){
                                           newtable[slide+iscritticounter][2]+=datipersone.split("/n")[iscritticounter].split(",")[0].split(" ")[z];
@@ -766,9 +770,12 @@ inputFile.addEventListener('change', function(event) {
                                
                                 //cognome
                                 try{
-                                  newtable[slide+iscritticounter][3] = "";
-                                  for(let estraidati = numpos; estraidati < datipersone.split("/n")[iscritticounter].split(",")[0].split(" ").length; estraidati++){
-                                    newtable[slide+iscritticounter][3]+=datipersone.split("/n")[iscritticounter].split(",")[0].split(" ")[estraidati] + ' ';
+                                  if(newtable[slide+iscritticounter][3].length == 0){ // se non c'è già scritto qualcosa
+                                  
+                                    newtable[slide+iscritticounter][3] = "";
+                                    for(let estraidati = numpos; estraidati < datipersone.split("/n")[iscritticounter].split(",")[0].split(" ").length; estraidati++){
+                                      newtable[slide+iscritticounter][3]+=datipersone.split("/n")[iscritticounter].split(",")[0].split(" ")[estraidati] + ' ';
+                                    }
                                   }
                                 } catch {
                                   
@@ -780,15 +787,17 @@ inputFile.addEventListener('change', function(event) {
       
                                 //email
                                 try{
-                                    newtable[slide+iscritticounter][6] = "";
-                                    newtable[slide+iscritticounter][6]=datipersone.split("/n")[iscritticounter].split(",")[1].split(" ")[1];
+
+                                    if (newtable[slide+iscritticounter][6].length == 0)
+                                      newtable[slide+iscritticounter][6]=datipersone.split("/n")[iscritticounter].split(",")[1].split(" ")[1];
+
                                 } catch {
                                    
                                 }
                                 
                                 //cf
                                 try{
-                                    newtable[slide+iscritticounter][9] = "";
+                                    if (newtable[slide+iscritticounter][9].length == 0)
                                     newtable[slide+iscritticounter][9]=datipersone.split("/n")[iscritticounter].split(",")[2].split(" ")[1].toUpperCase();
                                 } catch {
                                   
